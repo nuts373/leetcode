@@ -58,6 +58,15 @@ public:
 		}
 		return result;
 	}
+	int getSum(int a, int b){
+		while (b!=0)
+		{
+			int carry = a^b;
+			b = (a&b) << 1;
+			a = carry;
+		}
+		return a;
+	}
 };
 
 int main(){
