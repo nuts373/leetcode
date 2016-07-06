@@ -41,6 +41,23 @@ public:
 		}
 		return -1;
 	}
+	vector<int> countBits(int num){
+		vector<int> result{ 0, 1 };
+		vector<int> zero{ 0 };
+		if (num == 0) return zero;
+		if (num == 1) return result;
+		int index = 2;
+		for (int i = 2; i <= num; i++){
+			if (i == index * 2){
+				result.push_back(1);
+				index *= 2;
+			}
+			else{
+				result.push_back(result[i - index] + 1);
+			}
+		}
+		return result;
+	}
 };
 
 int main(){
