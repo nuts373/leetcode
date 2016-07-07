@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<set>
 using namespace std;
 class Solution{
 public:
@@ -82,6 +83,13 @@ public:
 				B ^= nums[i];
 		}
 		return vector<int>({ A, B });
+	}
+	vector<int> intersection(vector<int>& nums1, vector<int>& nums2){
+		set<int> s(nums1.begin(), nums1.end()), res;
+		for (auto a : nums2){
+			if (s.count(a)) res.insert(a);
+		}
+		return vector<int>(res.begin(), res.end());
 	}
 };
 
