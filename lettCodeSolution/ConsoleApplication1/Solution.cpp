@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<set>
+#include<string>
 using namespace std;
 class Solution{
 public:
@@ -91,10 +92,26 @@ public:
 		}
 		return vector<int>(res.begin(), res.end());
 	}
+	char findTheDifference(string s, string t) {
+		int ans[26] = { 0 };
+		char ansstring;
+		for (int i = 0; i < t.size(); i++)
+		{
+			if (i != (t.size()-1)) ans[s[i] - 'a']--;
+			ans[t[i] - 'a']++;
+		}
+		for (int i = 0; i < 26; i++)
+			if (ans[i] == 1)
+				ansstring = 'a' + i;
+		return ansstring;
+	}
 };
 
 int main(){
 	Solution solution;
-	vector<int> input{ 4, 5, 6, 7, 0, 1, 2 };
-	cout << solution.search(input, 7) << endl;
+	string s, t;
+	s = "abcd";
+	t = "abcde";
+	cout << solution.findTheDifference(s,t) << endl;
+	system("pause");
 }
